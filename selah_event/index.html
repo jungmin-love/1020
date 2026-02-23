@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>슬아 이벤트</title>
+<title>슬기의 이벤트</title>
 
 <style>
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 button { -webkit-appearance: none; appearance: none; font: inherit; }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 body{
   margin:0;
   min-height:100vh;
@@ -30,28 +22,14 @@ body{
   background-image:
     linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
     url("01.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
   transition: background-image .5s ease;
 
   font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-  overflow: hidden;
-  transition: background-image 0.5s ease;
-  padding: 24px;
 }
 
-.card {
-  background: rgba(255,255,255,0.95);
-  padding: 32px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-  max-width: 420px;
-  width: 100%;
 .card{
   width:100%;
   max-width:420px;
@@ -64,21 +42,12 @@ body{
   z-index:10; /* ✅ 클릭 안 막히게 */
 }
 
-h1 {
-  font-size: 20px;
-  margin-bottom: 24px;
-  line-height: 1.6;
 h1{
   font-size:20px;
   line-height:1.6;
   margin:0 0 24px;
 }
 
-.btn-container {
-  position: relative;
-  width: 280px;
-  height: 56px;
-  margin: 0 auto;
 .btn-container{
   position:relative;
   width:280px;
@@ -87,19 +56,6 @@ h1{
   touch-action: manipulation; /* ✅ 모바일 탭 반응 개선 */
 }
 
-.btn {
-  position: absolute;
-  top: 0;
-
-  width: 120px;
-  height: 48px;
-
-  border-radius: 30px;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  transition: transform 0.15s ease;
-  user-select: none;
 .btn{
   position:absolute;
   top:0;
@@ -115,31 +71,11 @@ h1{
   transition: transform .15s ease;
 }
 
-.btn:active { transform: scale(0.98); }
 .btn:active{ transform:scale(.98); }
 
-.yes {
-  left: 0;
-  background: #ff4d6d;
-  color: white;
-  z-index: 2;
-}
-
-.no {
-  left: 160px;
-  background: #d6d6d6;
-  color: #111;
-  z-index: 1;
-}
 .yes{ left:0; background:#ff4d6d; color:#fff; }
 .no { left:160px; background:#d6d6d6; color:#111; }
 
-.result {
-  margin-top: 18px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #ff4d6d;
-  display: none;
 .result{
   margin-top:18px;
   font-size:20px;
@@ -148,9 +84,6 @@ h1{
   display:none;
 }
 
-.heart {
-  position: fixed;
-  pointer-events: none;
 .heart{
   position:fixed;
   pointer-events:none;
@@ -158,9 +91,6 @@ h1{
   z-index:5;
 }
 
-@keyframes float {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(-300px); opacity: 0; }
 @keyframes float{
   0%{ transform:translateY(0); opacity:1; }
   100%{ transform:translateY(-300px); opacity:0; }
@@ -169,22 +99,10 @@ h1{
 </head>
 
 <body>
-
-<div class="card">
-  <h1>
-    우리 같이 데이트 할래?
-  </h1>
-
-  <div class="btn-container" id="btnArea">
-    <button class="btn yes" id="yesBtn" type="button">Yes</button>
-    <button class="btn no" id="noBtn" type="button">No</button>
-  </div>
-
-  <div class="result" id="result">
-    ❤️ 우리 데이트 확정 ❤️
   <div class="card">
     <h1>
-      우리 같이 데이트 할래?
+      발렌타인데이에는 못만났지만<br>
+      화이트데이에 같이 데이트 할래?
     </h1>
 
     <div class="btn-container" id="btnArea">
@@ -194,30 +112,8 @@ h1{
 
     <div class="result" id="result">❤️ 우리 데이트 확정 ❤️</div>
   </div>
-</div>
 
 <script>
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const btnArea = document.getElementById("btnArea");
-const result = document.getElementById("result");
-
-yesBtn.addEventListener("click", () => {
-  document.body.style.backgroundImage =
-    'linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("02.jpg")';
-  result.style.display = "block";
-  createHearts();
-});
-
-function createHearts() {
-  for (let i = 0; i < 20; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.textContent = "❤️";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.top = window.innerHeight + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 2800);
 (function () {
   const yesBtn = document.getElementById("yesBtn") || document.querySelector(".yes");
   const noBtn  = document.getElementById("noBtn")  || document.querySelector(".no");
@@ -228,31 +124,7 @@ function createHearts() {
     // 요소가 없으면(복붙 실수) 그냥 종료
     return;
   }
-}
 
-function moveNo() {
-  const w = 120;
-  const h = 48;
-
-  const maxX = btnArea.clientWidth - w;
-  const maxY = btnArea.clientHeight - h;
-
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-
-  noBtn.style.left = x + "px";
-  noBtn.style.top  = y + "px";
-}
-
-noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("pointerdown", (e) => {
-  e.preventDefault();
-  moveNo();
-}, { passive: false });
-noBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  moveNo();
-});
   yesBtn.addEventListener("click", () => {
     document.body.style.backgroundImage =
       'linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("02.jpg")';
@@ -272,7 +144,6 @@ noBtn.addEventListener("click", (e) => {
     }
   }
 
-window.add
   function moveNo(){
     const w = noBtn.offsetWidth || 120;
     const h = noBtn.offsetHeight || 48;
@@ -282,12 +153,10 @@ window.add
     const x = Math.max(0, Math.random()*maxX);
     const y = Math.max(0, Math.random()*maxY);
 
-​
     noBtn.style.left = x + "px";
     noBtn.style.top  = y + "px";
   }
 
-​
   // PC: 올리면 도망
   noBtn.addEventListener("mouseenter", moveNo);
 
